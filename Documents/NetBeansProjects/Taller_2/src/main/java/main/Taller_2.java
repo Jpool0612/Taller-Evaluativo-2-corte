@@ -21,6 +21,7 @@ public class Taller_2 {
         Consulta c = new Consulta("#C008", "2025-07-04", d);
     // Finalmente muestro toda la información de la consulta por pantalla  
         c.mostrarConsulta();
+        
        
    }
 }

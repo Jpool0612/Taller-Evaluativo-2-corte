@@ -11,50 +11,96 @@ import java.util.ArrayList;
  * @author Jean Pool
  */
 public class Mascota {
+ 
+
+    private String nombre;
+    private String especie;
+    private int edad; 
+    private Historial his;
     
-    private String Nombre;
-    private String Especie;
-    private int Edad;
-    private ArrayList<Consulta> Consulta = new ArrayList<>();
-    
-    public void mostrarHistorial(String Nombre, String Especie, int Edad){
-    
-           System.out.println("Informacion de la mascota" + Nombre + Especie + Edad);
-    
+    public Mascota(String nombre, String especie, int edad) {
+        setEdad(edad);
+        setEspecie(especie);
+        setNombre(nombre);
+        this.his = new Historial();
     }
+
+    
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setNombre(String nombre) {
+        if (nombre == null || nombre.isBlank()){
+            throw new IllegalArgumentException(" Nombre invalido.");
+        }
+        this.nombre = nombre;
     }
 
     public String getEspecie() {
-        return Especie;
+        return especie;
     }
 
-    public void setEspecie(String Especie) {
-        this.Especie = Especie;
+    public void setEspecie(String especie) {
+        if (especie == null || especie.isBlank()){
+            throw new IllegalArgumentException(" Especie invalida.");
+        }
+        this.especie = especie;
     }
 
     public int getEdad() {
-        return Edad;
+        return edad;
     }
 
-    public void setEdad(int Edad) {
-        this.Edad = Edad;
+    public void setEdad(int edad) {
+        if (edad <= 0){
+            throw new IllegalArgumentException("Edad no valida.");
+        }
+        this.edad = edad;
     }
 
-    public ArrayList<Consulta> getConsulta() {
-        return Consulta;
-    }
 
-    public void setConsulta(ArrayList<Consulta> Consulta) {
-        this.Consulta = Consulta;
+    
+    public void agregarConsulta(Consulta c){
+     his.agregarConsulta(c);
     }
+    public void mostrarHistorial() {
+        System.out.println("Mascota:" + nombre + " | " + "Especie: "+ especie + " | " + "Edad: " + edad);
+        
+//        for (Consulta c : consultas){
+//        c.mostrarDetallesConsulta();
+   
+        his.mostrarConsultas();
+        }
+
+    }
+//    public String nombre;
+//    public String especie;
+//    public int edad; 
+//    private ArrayList<Consulta> consultas = new ArrayList();
+//
+//    public Mascota(String nombre, String especie, int edad) {
+//        this.nombre = nombre;
+//        this.especie = especie;
+//        this.edad = edad;
+//    }
+//    public void agregarConsulta(Consulta c){
+//        consultas.add(c);
+//    }
+//    public void mostrarHistorial() {
+//        System.out.println("Mascota:" + this.nombre + " | " + "Especie: "+ this.especie + " | " + "Edad: " + this.edad);
+//        
+//        for (Consulta c : consultas){
+//        c.mostrarDetallesConsulta();
+//        }
+//
+//    }
+    
+
+
+
     
     
-    
-}
+
+

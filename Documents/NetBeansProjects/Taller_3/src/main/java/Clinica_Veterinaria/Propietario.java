@@ -11,40 +11,42 @@ import java.util.ArrayList;
  * @author Jean pool
  */
 public class Propietario {
-    
-    private String Nombre;
-    private int Documento;
-    private int Telefono;
-    private ArrayList<Mascota> mascotas = new ArrayList<>();
-    
-    public void mostrarInformacionCompleta(String Nombre, int Documento, int Telefono){
-        
-        System.out.println("Informacion del propietario: " + Nombre + Documento + Telefono);
-    
+        private String nombre;
+    private int documentos;
+    private int telefono;
+    private ArrayList<Mascota> mascotas ;
+
+    public Propietario(String nombre, int documentos, int telefono) {
+        setDocumentos(documentos);
+        setNombre(nombre);
+        setTelefono(telefono);
+        this.mascotas = new ArrayList<>();
     }
+
+   
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public int getDocumento() {
-        return Documento;
+    public int getDocumentos() {
+        return documentos;
     }
 
-    public void setDocumento(int Documento) {
-        this.Documento = Documento;
+    public void setDocumentos(int documentos) {
+        this.documentos = documentos;
     }
 
     public int getTelefono() {
-        return Telefono;
+        return telefono;
     }
 
-    public void setTelefono(int Telefono) {
-        this.Telefono = Telefono;
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
     }
 
     public ArrayList<Mascota> getMascotas() {
@@ -55,6 +57,40 @@ public class Propietario {
         this.mascotas = mascotas;
     }
     
-    
-    
+    public void agregarMascota(Mascota m){
+        mascotas.add(m);
+    }
+    public void mostrarInformacionCompleta(){
+        System.out.println("Nombre: "+ this.nombre);
+        System.out.println("Documentacion: "+ this.documentos);
+        System.out.println("Telefono: "+ this.telefono);
+        for(Mascota m : mascotas){
+            m.mostrarHistorial();
+        }
+    }
 }
+
+
+//    public String nombre;
+//    public int documentos;
+//    public String telefono;
+//    public ArrayList<Mascota> mascotas = new ArrayList<>();
+//    
+//
+//    public Propietario(String nombre, int documentos, String telefono) {
+//        this.nombre = nombre;
+//        this.documentos = documentos;
+//        this.telefono = telefono;
+//    }
+//    public void agregarMascota(Mascota m){
+//        mascotas.add(m);
+//    }
+//    public void mostrarInformacionCompleta(){
+//        System.out.println("Nombre: "+ this.nombre);
+//        System.out.println("Documentacion: "+ this.documentos);
+//        System.out.println("Telefono: "+ this.telefono);
+//        for(Mascota m : mascotas){
+//            m.mostrarHistorial();
+//        }
+//    }
+//}

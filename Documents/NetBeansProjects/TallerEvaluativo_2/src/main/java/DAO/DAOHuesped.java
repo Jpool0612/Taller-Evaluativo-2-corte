@@ -15,7 +15,7 @@ public class DAOHuesped {
     
     private ArrayList<Huesped> ListHuesped = new ArrayList<>();
     
-    public boolean guardarPropietario(Huesped huesped) {
+    public boolean guardarHuesped(Huesped huesped) {
         for (Huesped h : ListHuesped) {
             if (h.getDocumeto().equals(huesped.getDocumeto())) {
                 return false; // Ya existe
@@ -24,7 +24,6 @@ public class DAOHuesped {
         ListHuesped.add(huesped);
         return true;
     }
-            
     
 }
     

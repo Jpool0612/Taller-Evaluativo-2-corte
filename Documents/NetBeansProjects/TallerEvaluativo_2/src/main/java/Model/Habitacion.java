@@ -14,15 +14,15 @@ public class Habitacion {
  
     private int Numero;
     private String Tipo; 
-    private int Incapacidad; 
+    private int capacidad; 
     private String Estado;
     private Reserva reserva;
 
-    public Habitacion(int Numero, String Tipo, int Incapacidad, String Estado) {
+    public Habitacion(int Numero, String Tipo, int capacidad, String Estado) {
         setNumero(Numero);
         setTipo(Tipo);
-        setIncapacidad(Incapacidad);
-        setEstado(Estado);
+        setcapacidad(capacidad);
+        this.Estado = "Libre"; //Siempre empieza Libre
     }
 
     
@@ -32,6 +32,11 @@ public class Habitacion {
     }
 
     public void setNumero(int Numero) {
+        //verificar que el numero debe ser positivo
+        if (Numero >= 0){
+        
+            throw new IllegalArgumentException("Numero invalido, debe ser un numero positivo.");
+        }
         this.Numero = Numero;
     }
 
@@ -40,15 +45,25 @@ public class Habitacion {
     }
 
     public void setTipo(String Tipo) {
+        if (Tipo == null || Tipo.isBlank())
+            throw new IllegalArgumentException("Tipo no puede estar vacio.");
+        Tipo = Tipo.toLowerCase();
+        if (!Tipo.equals("Estandar") && !Tipo.equals("Suite Ecologica") && !Tipo.equals("Familiar")){
+            throw new IllegalArgumentException("Tipo no valido:" + Tipo);
+        }
         this.Tipo = Tipo;
     }
 
-    public int getIncapacidad() {
-        return Incapacidad;
+    public int getcapacidad() {
+        return capacidad;
     }
 
-    public void setIncapacidad(int Incapacidad) {
-        this.Incapacidad = Incapacidad;
+    public void setcapacidad(int capacidad) {
+        //verifica que la capacidad debe ser mayor de 0
+        if (capacidad >= 0){
+            throw new IllegalArgumentException("Capacidad invalida.");
+        }
+        this.capacidad = capacidad;
     }
 
     public String getEstado() {
@@ -56,6 +71,13 @@ public class Habitacion {
     }
 
     public void setEstado(String Estado) {
+        if (Estado == null || Estado.isBlank()){
+            throw new IllegalArgumentException("Tipo no puede estar vacio.");
+        }
+        Estado = Estado.toLowerCase();
+            if (!Estado.equals("Libre") && !Estado.equals("Ocupda") && !Estado.equals("Mantenimiento")){
+                throw new IllegalArgumentException("Estado no valido:" + Estado);
+            }    
         this.Estado = Estado;
     }
     

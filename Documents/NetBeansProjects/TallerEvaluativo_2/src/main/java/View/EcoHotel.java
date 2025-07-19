@@ -8,12 +8,12 @@ package View;
  *
  * @author MI PC
  */
-public class Hotel extends javax.swing.JPanel {
+public class EcoHotel extends javax.swing.JPanel {
 
     /**
      * Creates new form Hotel
      */
-    public Hotel() {
+    public EcoHotel() {
         initComponents();
     }
 

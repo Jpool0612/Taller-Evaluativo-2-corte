@@ -26,15 +26,6 @@ public class Huesped {
         
     }
     
-//    public void mostrarReserva(){
-//        for(reserva m : Reserva) {
-//        
-//            m.mostrarInfo();
-//        }
-//    
-//    }
-    
-    
     
 
     public String getNombre() {
@@ -68,7 +59,12 @@ public class Huesped {
     }
 
     public void setCorreo(String Correo) {
+         // verifica que el correo tenga @ y no este vacio
+        if (Correo == null || Correo.isBlank() || !Correo.contains("@")) {
+            throw new IllegalArgumentException("Correo invalido."); 
+        }
         this.Correo = Correo;
+        
     }
 
     public int getTelefono() {

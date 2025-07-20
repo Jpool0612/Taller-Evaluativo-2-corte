@@ -13,14 +13,14 @@ import java.util.ArrayList;
 public class Huesped {
     
     private String Nombre;
-    private String Documeto;
+    private String Documento;
     private String Correo;
-    private int Telefono;
+    private String Telefono;
     private Reserva reserva;
 
-    public Huesped(String Nombre, String Documeto, String Correo, int Telefono) {
+    public Huesped(String Nombre, String Documento, String Correo, String Telefono) {
         setNombre(Nombre);
-        setDocumeto(Documeto);
+        setDocumento(Documento);
         setCorreo(Correo);
         setTelefono(Telefono);
         
@@ -36,12 +36,12 @@ public class Huesped {
         this.Nombre = Nombre;
     }
 
-    public String getDocumeto() {
-        return Documeto;
+    public String getDocumento() {
+        return Documento;
     }
 
-    public void setDocumeto(String Documeto) {
-        this.Documeto = Documeto;
+    public void setDocumento(String Documento) {
+        this.Documento = Documento;
     }
 
     public Reserva getReserva() {
@@ -59,19 +59,17 @@ public class Huesped {
     }
 
     public void setCorreo(String Correo) {
-         // verifica que el correo tenga @ y no este vacio
-        if (Correo == null || Correo.isBlank() || !Correo.contains("@")) {
-            throw new IllegalArgumentException("Correo invalido."); 
-        }
         this.Correo = Correo;
         
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return Telefono;
     }
 
-    public void setTelefono(int Telefono) {
+    
+
+    public void setTelefono(String Telefono) {
         this.Telefono = Telefono;
     }
 }

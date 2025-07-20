@@ -17,10 +17,11 @@ public class Reserva {
     private LocalDate FechaSalida;
     private Huesped huesped;
     private Habitacion habitacion;
+    
 
-    public Reserva(int reserva, LocalDate FechaEntrada, Huesped huesped, Habitacion habitacion) {
+    public Reserva(int reserva, String FechaEntrada, Huesped huesped, Habitacion habitacion) {
         setReserva(reserva);
-        setFechaEntrada(LocalDate.now());//genera fecha actual
+        setFechaEntrada(FechaEntrada);//genera fecha actual
         setHuesped(huesped);
         setHabitacion(habitacion);
     }
@@ -38,7 +39,7 @@ public class Reserva {
         return FechaEntrada;
     }
 
-    public void setFechaEntrada(LocalDate FechaEntrada) {
+    public void setFechaEntrada(String FechaEntrada) {
         this.FechaEntrada = LocalDate.now();//muestra Fecha del dia de entrada
     }
  
@@ -47,7 +48,7 @@ public class Reserva {
         return FechaSalida;
     }
 
-    public void setFechaSalida(LocalDate FechaSalida) {
+    public void setFechaSalida(String FechaSalida) {
         this.FechaSalida = LocalDate.now();//muestra fecha del dia que sale
     }
 

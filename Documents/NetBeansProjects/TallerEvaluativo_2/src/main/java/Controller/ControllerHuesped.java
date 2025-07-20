@@ -5,7 +5,10 @@
 package Controller;
 
 import DAO.DAOHuesped;
+import Exceptions.DatoInvalidoException;
+import Exceptions.EntidadNoEncontradaException;
 import Model.Huesped;
+import java.util.List;
 
 /**
  *
@@ -16,18 +19,50 @@ public class ControllerHuesped {
     private DAOHuesped DAO;
     
     public ControllerHuesped(){
-    
-        this.DAO = new DAOHuesped();
-    
+       this.daoHuesped = new DAOHuesped();
     }
+        private DAOHuesped daoHuesped;
+
     
-    public boolean guardarHuesped(Huesped huesped){
-        if(huesped == null || huesped.getNombre() == null || huesped.getDocumeto() == null || !huesped.getCorreo().contains("@") || huesped.getCorreo() == null || huesped.getTelefono() <= 7  ){
-        
-            return false;
+     
+
+    public ControllerHuesped(DAOHuesped daoHuesped) {
+        this.daoHuesped = daoHuesped;
+    }
+
+    // Registrar huésped
+    public boolean registrarHuesped(String nombre, String documento, String correo, String telefono)
+            throws DatoInvalidoException {
+
+        if (nombre == null || nombre.isBlank() ||
+            documento == null || documento.isBlank() ||
+            correo == null || correo.isBlank() || !correo.contains("@") ||
+            telefono == null || telefono.isBlank()) {
+            throw new DatoInvalidoException("Datos inválidos para registrar huésped.");
         }
-    return DAO.guardarHuesped(huesped); // llama al metodo DAO
+
+        if (daoHuesped.buscarPorDocumento(documento) != null) {
+            throw new DatoInvalidoException("El documento ya está registrado para otro huésped.");
+        }
+
+        Huesped nuevo = new Huesped(nombre, documento, correo, telefono);
+        return daoHuesped.guardarHuesped(nuevo);
     }
-    
-    
+
+    // Buscar huésped por documento
+    public Huesped buscarHuesped(String documento) throws EntidadNoEncontradaException {
+        Huesped h = daoHuesped.buscarPorDocumento(documento);
+        if (h == null) {
+            throw new EntidadNoEncontradaException("No se encontró el huésped con documento " + documento);
+        }
+        return h;
+    }
+
+    // Listar huéspedes
+    public List<Huesped> listarHuespedes() {
+        return daoHuesped.obtenerHuespedes();
+    }
 }
+
+    
+
